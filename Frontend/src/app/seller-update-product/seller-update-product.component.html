@@ -1,0 +1,15 @@
+<div class="update-product">
+    <h1>UPDATE PRODUCT</h1>
+    <p class ="message-p">{{productmessage}}</p>
+    <form #addproduct = "ngForm" (ngSubmit)="submit(addproduct.value)" class = "common-form">
+        <input type="text" class="form-input" placeholder="Enter Movie name" name="name" ngModel = {{productdata?.name}} />
+        <input type="text" class="form-input" placeholder="Enter Movie price" name="price" ngModel = {{productdata?.price}} />
+        <input type="text" class="form-input" placeholder="Enter Movie Genre" name="genre" ngModel = {{productdata?.genre}} />
+        <input type="text" class="form-input" placeholder="Enter Show time" name="stime" ngModel = {{productdata?.stime}} />
+        <input type="text" class="form-input" placeholder="Enter Movie Status" name="status" ngModel = {{productdata?.status}} />
+        <input type="text" class="form-input" placeholder="Enter Movie Language" name="lang" ngModel = {{productdata?.lang}} />
+        <textarea type="text" class="form-input" placeholder="Enter Movie description" name="desc" ngModel = {{productdata?.desc}} ></textarea>
+        <input type="text" class="form-input" placeholder="Enter image url" name="img" ngModel = {{productdata?.img}} />
+        <button class="form-button">UPDATE PRODUCT</button>
+    </form>
+</div>

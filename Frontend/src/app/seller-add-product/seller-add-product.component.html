@@ -1,0 +1,15 @@
+<div class="add-product">
+    <h1>ADD NEW MOVIE</h1>
+    <p class ="message-p">{{addproductmessage}}</p>
+    <form #addproduct = "ngForm" (ngSubmit)="submit(addproduct.value)" class = "common-form">
+        <input type="text" class="form-input" placeholder="Enter movie name" name="name" ngModel />
+        <input type="text" class="form-input" placeholder="Enter ticket price" name="price" ngModel />
+        <input type="text" class="form-input" placeholder="Enter genre" name="genre" ngModel />
+        <input type="text" class="form-input" placeholder="Enter lang" name="lang" ngModel />
+        <input type="text" class="form-input" placeholder="Enter show time" name="stime" ngModel />
+        <input type="text" class="form-input" placeholder="Enter status" name="status" ngModel />
+        <textarea type="text" class="form-input" placeholder="Enter movie description" name="desc" ngModel ></textarea>
+        <input type="text" class="form-input" placeholder="Enter image url" name="img" ngModel />
+        <button class="form-button">ADD MOVIE</button>
+    </form>
+</div>
