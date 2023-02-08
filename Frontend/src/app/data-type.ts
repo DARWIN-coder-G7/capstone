@@ -25,7 +25,9 @@ export interface product {
     lang:string,
     stime:string,
     quantity:undefined|number,
-    productid:undefined|number
+    productid:undefined|number,
+    userid:number|undefined
+
 }
 export interface cart{
     name:string,
@@ -38,8 +40,8 @@ export interface cart{
     stime:string,
     id:number|undefined,
     quantity:undefined|number,
-    productid:number,
-    userid:number
+    productid:number|undefined,
+    userid:number|undefined
 }
 export interface pricesummary{
     price:number,

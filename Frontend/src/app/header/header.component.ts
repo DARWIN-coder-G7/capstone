@@ -27,10 +27,13 @@ ngOnInit(): void {
       }
       else if(localStorage.getItem('user')){
         let userstore = localStorage.getItem('user');
+        //console.log(userstore);
         let userdata = userstore && JSON.parse(userstore);
-        this.username  = userdata.name;
+        //console.log(userdata+"re");
+        this.username  = userdata.username;
         this.menutype = 'user';
-        this.prod.getcartlist(userdata.id);
+        //console.log(userdata+"from");
+        this.prod.getcartlist(userdata.userid);
             }
       else{
         this.menutype="default"

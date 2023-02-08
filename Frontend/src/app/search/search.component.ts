@@ -8,7 +8,8 @@ import { ProductService } from '../services/product.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit{
-  searchresult:undefined|product[];
+  searchresult:product[]|any;
+  p:number=1;
   nodata:string = '';
   constructor(private activeroute:ActivatedRoute,private product:ProductService){}
   ngOnInit(): void {
@@ -21,5 +22,9 @@ export class SearchComponent implements OnInit{
       }
       
     })
+  }
+  Filterchange(event:Event){
+    const filvalue = (event.target as HTMLInputElement).value;
+    this.searchresult.filter = filvalue;
   }
 }

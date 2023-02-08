@@ -55,23 +55,26 @@ export class ProductService {
       }
     }
     addToCart(cartdata:cart){
+      //console.log(cartdata + "from service");
       return this.http.post(`http://localhost:8080/api/cart`,cartdata)
     }
     getcartlist(userid:number){
-      return this.http.get<product[]>(`http://localhost:8080/api/cart?userid=`+userid,
+    //console.log(userid);
+      return this.http.get<product[]>(`http://localhost:8080/api/cart/byuser?userid=${userid}`,
       {observe:'response'}).subscribe((result)=>{
         if(result && result.body){
+          //console.log(JSON.stringify(result)+"from serv getcart");
           this.cartdata.emit(result.body);
         }
       })
     }
     removefromremotecart(cartid:number){
-      return this.http.delete(`http://localhost:3000/cart/`+cartid)
+      return this.http.delete(`http://localhost:8080/api/cart/`+cartid)
     }
     currentcart(){
       let userstore = localStorage.getItem('user');
       let userdata = userstore && JSON.parse(userstore);
-      return this.http.get<cart[]>(`http://localhost:3000/cart?userid=`+userdata.id)
+      return this.http.get<cart[]>(`http://localhost:8080/api/cart/byuser?userid=${userdata.userid}`)
     }
     ordernow(data:order){
       return this.http.post(`http://localhost:3000/orders`,data);
@@ -80,5 +83,10 @@ export class ProductService {
       let userstore = localStorage.getItem('user');
       let userdata = userstore && JSON.parse(userstore);
       return this.http.get<order[]>(`http://localhost:3000/orders?usereid=`+userdata.id)
+    }
+    deleteCartItems(cartid:number){
+      return this.http.delete(`http://localhost:8080/api/cart/`+cartid).subscribe((result)=>{
+        this.cartdata.emit([]);
+      })
     }
 }

@@ -10,6 +10,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-material-components/datetime-picker": "^9.0.0",
     "@angular/animations": "^15.0.0",
     "@angular/cdk": "^15.1.2",
     "@angular/common": "^15.0.0",
@@ -27,6 +28,9 @@
     "@popperjs/core": "^2.11.6",
     "abp-ng2-module": "^8.0.0",
     "bootstrap": "^5.2.3",
+    "ng-pick-datetime": "^7.0.0",
+    "ngx-pagination": "^6.0.3",
+    "ngx-toggle-switch": "^2.0.5",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"

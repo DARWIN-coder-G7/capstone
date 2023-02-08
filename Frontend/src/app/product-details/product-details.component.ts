@@ -16,7 +16,7 @@ export class ProductDetailsComponent implements OnInit{
       constructor(private activeroute:ActivatedRoute,private prdct:ProductService,private navroute:Router){}
   ngOnInit(): void {
     let productid = this.activeroute.snapshot.paramMap.get('productid');
-    console.log(productid);
+    //console.log(productid);
     productid && this.prdct.getproduct(productid).subscribe((result)=>{
        this.productdata= result;
        let cartdata = localStorage.getItem('localcart');
@@ -29,7 +29,8 @@ export class ProductDetailsComponent implements OnInit{
        }
        let user = localStorage.getItem('user');
        if(user){
-        let userid = user && JSON.parse(user).id;
+        let userid = user && JSON.parse(user).userid;
+        //console.log(userid + "from prod ng on init")
         this.prdct.getcartlist(userid);
         this.prdct.cartdata.subscribe((result)=>{
           let item = result.filter((item:product)=>productid?.toString()===item.productid?.toString())
@@ -58,15 +59,22 @@ export class ProductDetailsComponent implements OnInit{
         this.removecart=true;
       }else{
         let user = localStorage.getItem('user');
-        let userid = user && JSON.parse(user).id;
+        //console.log(user + "from prod details");
+        let userid = user && JSON.parse(user).userid;
+        //console.log(this.productdata);
         let cartdata:cart = {
           ...this.productdata,
           productid:this.productdata.id,
           userid
         }
+        //console.log(cartdata);
         delete cartdata.id;
+        //console.log(userid + "from prod")
       this.prdct.addToCart(cartdata).subscribe((result)=>{
-        if(result){this.prdct.getcartlist(userid);
+        
+        if(result){
+          //console.log(userid+"from prod det");
+          this.prdct.getcartlist(userid);
         this.removecart= true;
         }
       })

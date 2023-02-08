@@ -1,12 +1,25 @@
-<div class = "row search-item" *ngFor="let item of searchresult">
-    <p>{{nodata}}</p>
-    <div class="col-sm-3">
-       <a routerLink="/details/{{item.id}}"> <img src="{{item.img}}" alt=""></a>
-    </div>
-    <div class ="col-sm-8 details">
-        <h6> <a routerLink="/details/{{item.id}}">{{item.name}}</a></h6>
-        <p><b>{{item.price}}</b></p>
-        <p><span>{{item.stime}}</span><span>{{item.genre}}</span></p>
-        <p>{{item.desc}}</p>
-    </div>
-</div>
+<mat-form-field>
+    <mat-label>SEARCH</mat-label>
+    <input matInput placeholder="Type here to search" (keyup)="Filterchange($event)">
+   </mat-form-field>
+<ul>
+    <li *ngFor="let item of searchresult | paginate: { itemsPerPage: 4, currentPage: p }"> 
+        <div class = "row search-item" >
+            <p>{{nodata}}</p>
+            
+            <div class="col-sm-3">
+               <a routerLink="/details/{{item.id}}"> <img src="{{item.img}}" alt=""></a>
+            </div>
+            <div class ="col-sm-8 details">
+                <h6> <a routerLink="/details/{{item.id}}">{{item.name}}</a></h6>
+                <p><b>{{item.price}}</b></p>
+                <p><span>{{item.stime}}</span><span>{{item.genre}}</span></p>
+                <p>{{item.desc}}</p>
+            </div>
+        </div>
+         </li>
+  </ul>
+
+
+
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

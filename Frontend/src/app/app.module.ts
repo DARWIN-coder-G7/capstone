@@ -22,6 +22,10 @@ import { ConfirmpageComponent } from './confirmpage/confirmpage.component';
 import { ChangepassComponent } from './changepass/changepass.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import{MaterialModule} from '../material-module';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
+
+import {NgxPaginationModule} from 'ngx-pagination';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +41,8 @@ import{MaterialModule} from '../material-module';
     CartPageComponent,
     CheckoutComponent,
     ConfirmpageComponent,
-    ChangepassComponent
+    ChangepassComponent,
+    MyOrdersComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,9 @@ import{MaterialModule} from '../material-module';
     FontAwesomeModule,
     NgbModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    NgxPaginationModule,
+    
   
   ],
   providers: [],

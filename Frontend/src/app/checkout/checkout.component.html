@@ -5,6 +5,7 @@
     <div class="row">
         <div class ="col-sm-7">
             <h3>Add Shipping Address</h3>
+            <p class="message-p">{{ordermsg}}</p>
             <form #orderdata = "ngForm" class =" common-form" (ngSubmit)="ordernow(orderdata.value)">
             <input type="email" class="form-input" name = "email" placeholder="enter email id" ngModel />
             <input type="text" class="form-input" name = "address" placeholder="enter address" ngModel />
