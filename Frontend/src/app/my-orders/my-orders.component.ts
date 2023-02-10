@@ -13,5 +13,6 @@ export class MyOrdersComponent implements OnInit {
    ngOnInit(): void {
      this.product.orderlist().subscribe((result)=>{
       this.orderData = result;
+      console.log(result);
      }) }
 }

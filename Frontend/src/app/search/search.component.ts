@@ -25,6 +25,15 @@ export class SearchComponent implements OnInit{
   }
   Filterchange(event:Event){
     const filvalue = (event.target as HTMLInputElement).value;
-    this.searchresult.filter = filvalue;
+    this.product.filterbygenre(filvalue).subscribe((res)=>{
+      if(res){this.searchresult=res;}
+      
+    })
+                          
+  }
+  sortbyPrice(){
+    this.product.sortbyPrice().subscribe((x)=>{
+      if(x){this.searchresult=x;}
+    })
   }
 }

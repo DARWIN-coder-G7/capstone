@@ -85,12 +85,13 @@ export class ProductDetailsComponent implements OnInit{
     if(!localStorage.getItem('user')){
     this.prdct.removeitemfromcart(id);
    }else{
-    this.cartdata && this.prdct.removefromremotecart(this.cartdata.id)
-    .subscribe((result)=>{
+    this.cartdata && this.prdct.removefromremotecart(this.cartdata.id).
+    subscribe((result)=>{
       let user = localStorage.getItem('user');
-        let userid = user && JSON.parse(user).id;
+        let userid = user && JSON.parse(user).userid;
       this.prdct.getcartlist(userid)
     })
+
    }
    this.removecart= false;
   }

@@ -69,7 +69,7 @@ export class ProductService {
       })
     }
     removefromremotecart(cartid:number){
-      return this.http.delete(`http://localhost:8080/api/cart/`+cartid)
+      return this.http.delete<String>(`http://localhost:8080/api/cart/`+cartid)
     }
     currentcart(){
       let userstore = localStorage.getItem('user');
@@ -77,16 +77,23 @@ export class ProductService {
       return this.http.get<cart[]>(`http://localhost:8080/api/cart/byuser?userid=${userdata.userid}`)
     }
     ordernow(data:order){
-      return this.http.post(`http://localhost:3000/orders`,data);
+      return this.http.post(`http://localhost:8080/api/order`,data);
     }
     orderlist(){
       let userstore = localStorage.getItem('user');
       let userdata = userstore && JSON.parse(userstore);
-      return this.http.get<order[]>(`http://localhost:3000/orders?usereid=`+userdata.id)
+      console.log(userdata.userid);
+      return this.http.get<order[]>(`http://localhost:8080/api/order/byuser?userid=${userdata.userid}`)
     }
     deleteCartItems(cartid:number){
       return this.http.delete(`http://localhost:8080/api/cart/`+cartid).subscribe((result)=>{
         this.cartdata.emit([]);
       })
+    }
+    filterbygenre(query:String){
+      return this.http.get<product[]>(`http://localhost:8080/api/products/search/filterby?genre=${query}`);
+    }
+    sortbyPrice(){
+      return this.http.get<product[]>(`http://localhost:8080/api/products/sort`);
     }
 }

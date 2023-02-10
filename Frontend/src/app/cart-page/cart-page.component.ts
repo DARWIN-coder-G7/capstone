@@ -44,8 +44,10 @@ export class CartPageComponent implements OnInit {
   this.cartdata && this.product.removefromremotecart(id)
   .subscribe((result)=>{
     let user = localStorage.getItem('user');
-      let userid = user && JSON.parse(user).id;
-    this.product.getcartlist(userid)
+      let userid = user && JSON.parse(user).userid;
+    this.product.getcartlist(userid);
+    this.product.currentcart().subscribe((result)=>{
+      this.cartdata=result;})
   })
  }
  

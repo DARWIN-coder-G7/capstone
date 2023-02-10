@@ -13,9 +13,7 @@
         <div class="col-sm-2">
             <span>Status</span>
         </div>
-        <div class="col-sm-2">
-            <span>actions</span>
-        </div>
+        
     </div>
 
     <div class="row order-data" *ngFor="let order of orderData">
@@ -23,16 +21,14 @@
             <img class="order-img" src="">
         </div>
         <div class="col-sm-2">
-            <span>OrderId</span>
+            <span>{{order.id}}</span>
         </div>
         <div class="col-sm-2">
-            <span>Price</span>
+            <span>{{order.totalprice}}</span>
         </div>
         <div class="col-sm-2">
-            <span>Status</span>
+            <span>Booked</span>
         </div>
-        <div class="col-sm-2">
-            <span><button class="form-button">Cancel Order</button></span>
-        </div>
+       
     </div>
 </div>
